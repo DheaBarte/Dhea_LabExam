@@ -1,0 +1,71 @@
+-- Create Database
+CREATE DATABASE StudentInfoDB;
+USE StudentInfoDB;
+
+-- Create Course Table
+CREATE TABLE CourseTB (
+    courseId INT PRIMARY KEY,
+    courseName VARCHAR(250)
+);
+
+-- Create Year Table
+CREATE TABLE YearTB (
+    yearId INT PRIMARY KEY,
+    yearLvl INT
+);
+
+-- Insert Data into Course Table
+INSERT INTO CourseTB (courseId, courseName)
+VALUES 
+     (1, "IT"), 
+    (2, "BSBA"), 
+    (3, "ABEL"), 
+    (4, "BPA");
+
+-- Insert Data into Year Table
+INSERT INTO YearTB (yearId, yearLvl)
+VALUES 
+    (1, 1), 
+    (2, 2), 
+    (3, 3), 
+    (4, 4);
+
+-- Create Student Record Table
+CREATE TABLE StudentRecordTB (
+    studentId INT PRIMARY KEY,
+    firstName VARCHAR(250),
+    lastName VARCHAR(250),
+    middleName VARCHAR(250),
+    houseNo INT,
+    brgyName VARCHAR(250),
+    municipality VARCHAR(250),
+    province VARCHAR(250),
+    region VARCHAR(250),
+    country VARCHAR(250),
+    birthdate DATE,
+    age INT,
+    studContactNo VARCHAR(250),
+    emailAddress VARCHAR(250),
+    guardianFirstName VARCHAR(250),
+    guardianLastName VARCHAR(250),
+    hobbies VARCHAR(250),
+    nickname VARCHAR(250),
+    courseId INT,
+    yearId INT,
+    FOREIGN KEY (courseId) REFERENCES CourseTB(courseId),
+    FOREIGN KEY (yearId) REFERENCES YearTB(yearId)
+);
+
+-- Insert Five Student Records with New Values
+INSERT INTO StudentRecordTB 
+(studentId, firstName, lastName, middleName, houseNo, brgyName, municipality, province, region, country, birthdate, age, studContactNo, emailAddress, guardianFirstName, guardianLastName, hobbies, nickname, courseId, yearId) 
+VALUES 
+(1, 'Liam', 'Smith', 'T.', 1001, 'Brgy 10', 'Town A', 'State Z', 'Region I', 'Country X', '2002-03-15', 23, '09110011222', 'liamsmith@email.com', 'Olivia', 'Smith', 'Swimming', 'Li', 1, 1),
+
+(2, 'Sophia', 'Johnson', 'W.', 2002, 'Brgy 15', 'Town B', 'State Y', 'Region II', 'Country X', '2001-06-20', 24, '09220022333', 'sophiajohnson@email.com', 'Emily', 'Johnson', 'Reading', 'Sophie', 2, 2),
+
+(3, 'Jackson', 'Williams', 'X.', 3003, 'Brgy 20', 'Town C', 'State Z', 'Region III', 'Country X', '1999-11-05', 26, '09330033444', 'jacksonwilliams@email.com', 'Michael', 'Williams', 'Traveling', 'Jack', 3, 3),
+
+(4, 'Ava', 'Brown', 'Y.', 4004, 'Brgy 25', 'Town D', 'State A', 'Region IV', 'Country X', '2003-02-10', 22, '09440044555', 'avabrown@email.com', 'Daniel', 'Brown', 'Drawing', 'Avie', 4, 4),
+
+(5, 'Ethan', 'Davis', 'Z.', 5005, 'Brgy 30', 'Town E', 'State B', 'Region V', 'Country X', '2002-07-18', 23, '09550055666', 'ethandavis@email.com', 'Sarah', 'Davis', 'Gaming', 'E', 1, 1);
